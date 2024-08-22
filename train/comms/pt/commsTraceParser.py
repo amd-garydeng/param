@@ -7,9 +7,9 @@ from typing import List, Tuple
 
 from et_replay import ExecutionTrace
 
-from param_bench.train.comms.pt import comms_utils
-from param_bench.train.comms.pt.comms_utils import commsArgs
-from param_bench.train.comms.pt.pytorch_backend_utils import supportedP2pOps
+from  import comms_utils
+from comms_utils import commsArgs
+from pytorch_backend_utils import supportedP2pOps
 
 tensorDtypeMap = {
     "Tensor(int)": "int",

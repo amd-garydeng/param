@@ -2,7 +2,7 @@ from setuptools import setup
 
 
 def main():
-    package_base = "param_bench.train.comms.pt"
+    package_base = ""
 
     # List the packages and their dir mapping:
     # "install_destination_package_path": "source_dir_path"

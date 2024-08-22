@@ -17,8 +17,8 @@ from typing import Dict, List, Set
 
 import numpy as np
 import torch
-from param_bench.train.comms.pt import comms_utils
-from param_bench.train.comms.pt.comms_utils import (
+from  import comms_utils
+from comms_utils import (
     bootstrap_info_holder,
     commsArgs,
     commsParamsHolderBase,
@@ -26,8 +26,8 @@ from param_bench.train.comms.pt.comms_utils import (
     paramStreamGuard,
     paramToCommName,
 )
-from param_bench.train.comms.pt.param_profile import paramProfile, paramTimer
-from param_bench.train.comms.pt.pytorch_backend_utils import supportedP2pOps
+from param_profile import paramProfile, paramTimer
+from pytorch_backend_utils import supportedP2pOps
 
 try:
     from trainer_iteration_wrapper import setTrainingIteration  # @manual
@@ -64,7 +64,7 @@ def writeCommDetails(commsTracePerf: List, rank: int, folder: str = "./") -> Non
     if "://" in comms_file:  # assume that "://" in directory path means remote store
         saveToLocal = False
         try:
-            from param_bench.train.comms.pt.fb.internals import (
+            from fb.internals import (
                 writeRemoteTrace as writeFbRemoteTrace,
             )
 
@@ -1388,13 +1388,13 @@ class commsTraceReplayBench(paramCommsBench):
         """
         # init backend and corresponding function pointers
         if commsParams.nw_stack == "pytorch-dist":
-            from param_bench.train.comms.pt.pytorch_dist_backend import (
+            from pytorch_dist_backend import (
                 PyTorchDistBackend,
             )
 
             self.backendFuncs = PyTorchDistBackend(bootstrap_info, commsParams)
         elif commsParams.nw_stack == "pytorch-xla-tpu":
-            from param_bench.train.comms.pt.pytorch_tpu_backend import PyTorchTPUBackend
+            from pytorch_tpu_backend import PyTorchTPUBackend
 
             self.backendFuncs = PyTorchTPUBackend(bootstrap_info, commsParams)
         else:
@@ -1526,7 +1526,7 @@ class commsTraceReplayBench(paramCommsBench):
                 raw_comms_trace = comms_utils.commonUrlRead(remotePath=remotePath)
             else:
                 try:
-                    from param_bench.train.comms.pt.fb.internals import (
+                    from fb.internals import (
                         readRemoteTrace as readFbRemoteTrace,
                     )
 
@@ -1589,7 +1589,7 @@ class commsTraceReplayBench(paramCommsBench):
 
         # Convert trace to comms trace.
         try:
-            from param_bench.train.comms.pt import commsTraceParser
+            from  import commsTraceParser
         except ImportError:
             logger.info("FB internals not present, using base parser.")
             self.comms_trace = extractCommsInfo(self.comms_trace)

@@ -23,7 +23,7 @@ from io import StringIO
 from typing import Any, Callable, Dict, List, Optional, Tuple, Union
 
 try:
-    from param_bench.train.comms.pt.fb.internals import (
+    from fb.internals import (
         fbInitProfiler,
         fbSampleProfiler,
         fbStartProfiler,
@@ -38,8 +38,8 @@ except ImportError:
 
 import numpy as np
 import torch
-from param_bench.train.comms.pt.param_profile import paramTimer
-from param_bench.train.comms.pt.pytorch_backend_utils import (
+from param_profile import paramTimer
+from pytorch_backend_utils import (
     backendFunctions,
     collectiveArgsHolder,
     customized_backend,

@@ -66,7 +66,7 @@ def writeCommDetails(commsTracePerf: List, rank: int, folder: str = "./") -> Non
     if "://" in comms_file:  # assume that "://" in directory path means remote store
         saveToLocal = False
         try:
-            from param_bench.train.comms.pt.fb.internals import (
+            from fb.internals import (
                 writeRemoteTrace as writeFbRemoteTrace,
             )
 
@@ -1528,7 +1528,7 @@ class commsTraceReplayBench(paramCommsBench):
                 raw_comms_trace = comms_utils.commonUrlRead(remotePath=remotePath)
             else:
                 try:
-                    from param_bench.train.comms.pt.fb.internals import (
+                    from fb.internals import (
                         readRemoteTrace as readFbRemoteTrace,
                     )
 

@@ -25,7 +25,7 @@ from io import StringIO
 from typing import Any, Callable, Dict, List, Optional, Tuple, Union
 
 try:
-    from param_bench.train.comms.pt.fb.internals import (
+    from fb.internals import (
         fbInitProfiler,
         fbSampleProfiler,
         fbStartProfiler,

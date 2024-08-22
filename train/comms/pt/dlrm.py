@@ -23,7 +23,7 @@ import torch
 import torch.nn as nn
 from comms_utils import paramCommsBench
 
-from param_bench.train.comms.pt import comms_utils
+from  import comms_utils
 from pytorch_dist_backend import PyTorchDistBackend
 from torch.autograd import Function
 

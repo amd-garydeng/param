@@ -13,8 +13,8 @@ import numpy as np
 import torch
 import torch.distributed as dist
 import torch.nn as nn
-from param_bench.train.comms.pt.param_profile import paramProfile
-from param_bench.train.comms.pt.pytorch_backend_utils import (
+from param_profile import paramProfile
+from pytorch_backend_utils import (
     backendFunctions,
     collectiveArgsHolder,
 )
@@ -27,7 +27,7 @@ except ImportError:
     has_triton = False
 
 try:
-    from param_bench.train.comms.pt.fb.internals import (
+    from fb.internals import (
         all_to_all_internal,
         all_to_allv_internal,
         extend_distributed,
