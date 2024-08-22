@@ -13,8 +13,8 @@ import numpy as np
 import torch
 import torch.distributed as dist
 import torch.nn as nn
-from param_bench.train.comms.pt.param_profile import paramProfile
-from param_bench.train.comms.pt.pytorch_backend_utils import (
+from param_profile import paramProfile
+from pytorch_backend_utils import (
     backendFunctions,
     collectiveArgsHolder,
 )
